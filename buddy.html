@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy for You | Campus Buddy</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/buddy.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      <h1>Campus Buddy</h1>
+      <p class="tagline">Buddy · Overall development</p>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="campus.html" class="nav-link">Campus</a>
+      <a href="buddy.html" class="nav-link active">Buddy</a>
+      <a href="admin.html" class="nav-link">Admin</a>
+    </nav>
+  </header>
+
+  <main class="buddy-main">
+    <section class="buddy-tabs">
+      <button type="button" class="tab-btn active" data-tab="announcements">Announcements &amp; Events</button>
+      <button type="button" class="tab-btn" data-tab="cfbr">CFBR Feed</button>
+      <button type="button" class="tab-btn" data-tab="resume">Resume sharing</button>
+    </section>
+
+    <!-- Announcements (Club/Society presidents, Event coordinators) -->
+    <section id="announcements" class="buddy-panel active">
+      <h2>Announcements &amp; Events</h2>
+      <p class="panel-desc">Club presidents and event coordinators can post announcements, workshops, and events.</p>
+      <div class="announce-actions">
+        <button type="button" class="btn btn-primary" id="new-announcement">New announcement</button>
+      </div>
+      <div class="announce-form hidden" id="announce-form">
+        <div class="input-group">
+          <label>Title</label>
+          <input type="text" id="announce-title" placeholder="e.g. Coding Workshop this Saturday">
+        </div>
+        <div class="input-group">
+          <label>Content</label>
+          <textarea id="announce-content" rows="4" placeholder="Details, date, venue..."></textarea>
+        </div>
+        <div class="input-group">
+          <label>Type</label>
+          <select id="announce-type">
+            <option value="event">Event</option>
+            <option value="workshop">Workshop</option>
+            <option value="announcement">Announcement</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-announce">Cancel</button>
+          <button type="button" class="btn btn-primary" id="post-announcement">Post</button>
+        </div>
+      </div>
+      <div class="announce-list" id="announce-list"></div>
+    </section>
+
+    <!-- CFBR - Comment for better reach (students with college mates) -->
+    <section id="cfbr" class="buddy-panel">
+      <h2>CFBR Feed</h2>
+      <p class="panel-desc">Share posts with your college mates. Comment for better reach.</p>
+      <div class="cfbr-compose">
+        <textarea id="cfbr-input" rows="3" placeholder="Share an update, link, or ask for help..."></textarea>
+        <button type="button" class="btn btn-primary" id="post-cfbr">Post</button>
+      </div>
+      <div class="cfbr-feed" id="cfbr-feed"></div>
+    </section>
+
+    <!-- Resume sharing to club presidents / event coordinators -->
+    <section id="resume" class="buddy-panel">
+      <h2>Resume sharing</h2>
+      <p class="panel-desc">Share your resume with club presidents and event coordinators.</p>
+      <div class="resume-upload">
+        <label class="upload-label">
+          <input type="file" id="resume-file" accept=".pdf,.doc,.docx,image/*">
+          Upload resume (PDF, DOC, or image)
+        </label>
+        <div class="resume-meta">
+          <input type="text" id="resume-name" placeholder="Your name">
+          <select id="resume-share-to">
+            <option value="">Share with...</option>
+            <option value="club-presidents">Club presidents</option>
+            <option value="event-coordinators">Event coordinators</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" id="share-resume">Share resume</button>
+      </div>
+      <div class="resume-list" id="resume-list">
+        <p class="muted">Resumes you've shared will appear here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Campus Buddy · Buddy for you · Overall development</p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/buddy.js"></script>
+</body>
+</html>

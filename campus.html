@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus - Academic | Campus Buddy</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/campus.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      <h1>Campus Buddy</h1>
+      <p class="tagline">Campus · Academic</p>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="campus.html" class="nav-link active">Campus</a>
+      <a href="buddy.html" class="nav-link">Buddy</a>
+      <a href="admin.html" class="nav-link">Admin</a>
+    </nav>
+  </header>
+
+  <main class="campus-main">
+    <section class="campus-tabs">
+      <button type="button" class="tab-btn active" data-tab="assignments">Assignments</button>
+      <button type="button" class="tab-btn" data-tab="career">Career AI</button>
+      <button type="button" class="tab-btn" data-tab="maps">Maps</button>
+      <button type="button" class="tab-btn" data-tab="timetable">Time Table</button>
+    </section>
+
+    <!-- Assignments -->
+    <section id="assignments" class="campus-panel active">
+      <h2>Assignments with AI</h2>
+      <div class="mode-toggle">
+        <label class="toggle-option">
+          <input type="radio" name="output-mode" value="typed" checked>
+          <span>Typed</span>
+        </label>
+        <label class="toggle-option highlight">
+          <input type="radio" name="output-mode" value="handwritten">
+          <span>Handwritten / Calligraphy</span>
+        </label>
+      </div>
+      <p class="hint handwritten-hint hidden">Output will look handwritten — convenient to print and submit.</p>
+      <div class="assignment-area">
+        <div class="input-group">
+          <label>Topic or question</label>
+          <textarea id="assignment-input" rows="4" placeholder="e.g. Write a short essay on photosynthesis..."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="generate-assignment">Generate</button>
+        <div class="output-area">
+          <label>Output</label>
+          <div id="assignment-output" class="output-box" contenteditable="true"></div>
+          <button type="button" class="btn btn-secondary print-btn" id="print-assignment">Print / Save for submission</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career AI Assistant -->
+    <section id="career" class="campus-panel">
+      <h2>Career AI Assistant</h2>
+      <p class="panel-desc">Share your confusions, problems, or insecurities. Get supportive, practical guidance.</p>
+      <div class="career-area">
+        <div class="input-group">
+          <label>What's on your mind?</label>
+          <textarea id="career-input" rows="4" placeholder="e.g. I'm not sure if I should switch streams..."></textarea>
+        </div>
+        <div class="media-options">
+          <span class="label-small">Attach (optional):</span>
+          <label class="media-btn"><input type="file" id="career-image" accept="image/*"> Image</label>
+          <label class="media-btn"><input type="file" id="career-audio" accept="audio/*"> Audio</label>
+        </div>
+        <button type="button" class="btn btn-primary" id="ask-career">Ask Career AI</button>
+        <div class="output-area">
+          <div id="career-output" class="output-box career-response"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maps -->
+    <section id="maps" class="campus-panel">
+      <h2>Campus Maps &amp; Navigation</h2>
+      <p class="panel-desc">Find your way — no more wandering around.</p>
+      <div class="maps-area">
+        <div class="map-search">
+          <input type="text" id="map-search" placeholder="Search room, block, or place...">
+          <button type="button" class="btn btn-primary" id="search-location">Search</button>
+        </div>
+        <div class="map-container">
+          <div id="map-placeholder" class="map-placeholder">
+            <p>Enter your college name or upload a floor plan image to get started.</p>
+            <label class="upload-map">
+              <input type="file" id="map-image" accept="image/*">
+              Upload floor plan / map image
+            </label>
+            <div id="map-image-preview" class="map-preview hidden"></div>
+          </div>
+        </div>
+        <div id="map-results" class="map-results hidden"></div>
+      </div>
+    </section>
+
+    <!-- Time Table -->
+    <section id="timetable" class="campus-panel">
+      <h2>Time Table</h2>
+      <p class="panel-desc">Manage your schedule. Add image, video, or audio links for subjects if you like.</p>
+      <div class="timetable-area">
+        <div class="timetable-actions">
+          <button type="button" class="btn btn-primary" id="add-slot">Add slot</button>
+        </div>
+        <div class="timetable-grid" id="timetable-grid">
+          <div class="tt-header-row">
+            <div class="tt-cell">Day / Time</div>
+            <div class="tt-cell">9–10</div>
+            <div class="tt-cell">10–11</div>
+            <div class="tt-cell">11–12</div>
+            <div class="tt-cell">12–1</div>
+            <div class="tt-cell">1–2</div>
+            <div class="tt-cell">2–3</div>
+            <div class="tt-cell">3–4</div>
+          </div>
+          <div class="tt-row" data-day="mon">
+            <div class="tt-cell tt-day">Mon</div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+          </div>
+          <div class="tt-row" data-day="tue">
+            <div class="tt-cell tt-day">Tue</div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+          </div>
+          <div class="tt-row" data-day="wed">
+            <div class="tt-cell tt-day">Wed</div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+          </div>
+          <div class="tt-row" data-day="thu">
+            <div class="tt-cell tt-day">Thu</div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+          </div>
+          <div class="tt-row" data-day="fri">
+            <div class="tt-cell tt-day">Fri</div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+            <div class="tt-cell tt-slot"></div>
+          </div>
+        </div>
+        <div id="slot-modal" class="modal hidden">
+          <div class="modal-content">
+            <h3>Add / Edit slot</h3>
+            <div class="input-group">
+              <label>Subject</label>
+              <input type="text" id="slot-subject" placeholder="e.g. Physics">
+            </div>
+            <div class="input-group">
+              <label>Image URL (optional)</label>
+              <input type="url" id="slot-image" placeholder="https://...">
+            </div>
+            <div class="input-group">
+              <label>Video URL (optional)</label>
+              <input type="url" id="slot-video" placeholder="https://...">
+            </div>
+            <div class="input-group">
+              <label>Audio URL (optional)</label>
+              <input type="url" id="slot-audio" placeholder="https://...">
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn btn-secondary cancel-slot">Cancel</button>
+              <button type="button" class="btn btn-primary save-slot">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Campus Buddy · Campus · Academic (Images · Videos · Audio)</p>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/campus.js"></script>
+</body>
+</html>
